@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy package &apos;dto&apos; to &apos;CoreTag/src&apos;&#x0D;&#x0A;- Original project: &apos;Ajax04&apos;&#x0D;&#x0A;- Destination element: &apos;CoreTag/src&apos;&#x0D;&#x0A;- Original element: &apos;Ajax04/src/dto&apos;" description="Copy package" destination="=CoreTag/src" element1="/src&lt;dto" flags="589830" fragments="1" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyPackages" stamp="1579750388645" version="1.0"/>
+</session>

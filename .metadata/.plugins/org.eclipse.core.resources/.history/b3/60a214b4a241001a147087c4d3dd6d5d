@@ -1,0 +1,8 @@
+package dto;
+
+import java.io.Serializable;
+
+public class BBS implements Serializable {
+	private int seq;
+	
+}

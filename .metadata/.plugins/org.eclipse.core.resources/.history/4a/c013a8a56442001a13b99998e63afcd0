@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<input id="mytext1" type="text">
+
+<script type="text/javascript">
+	var myText1 = document.getElementById('mytext1');
+</script>
+</body>
+</html>

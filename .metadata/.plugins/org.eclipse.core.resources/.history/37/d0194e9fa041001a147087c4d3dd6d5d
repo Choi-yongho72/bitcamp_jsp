@@ -1,0 +1,53 @@
+<%@page import="dto.MemberDto"%>
+<%@page import="dao.MemberDao"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+String id = request.getParameter("id");
+System.out.println("id는 " + id);
+String pwd = request.getParameter("pwd");
+%>
+
+<%
+MemberDao dao = MemberDao.getInstance();
+
+MemberDto mem = dao.login(new MemberDto(id, pwd, null, null, 0));
+
+if(mem != null && mem.getId().equals(""))
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

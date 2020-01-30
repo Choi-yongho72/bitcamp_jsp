@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<input class="rand-text" type="text">
+<input class="rand-text" type="text">
+<input class="rand-text" type="text">
+
+<script type="text/javascript">
+	var randTexts = document.getElementsByClassName('rand-text');
+	
+	for(var i = 0; i < randTexts.length; i++) {
+		randTexts[i].value = Math.random();
+	}
+</script>
+</body>
+</html>

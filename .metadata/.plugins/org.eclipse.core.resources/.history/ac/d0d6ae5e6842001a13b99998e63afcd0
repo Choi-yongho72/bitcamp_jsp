@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<select id="my-selector">
+	<option></option>
+	<option></option>
+	<option></option>
+</select>
+
+<script type="text/javascript">
+	var mySelector = document.getElementById('my-selector');
+</script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<%@page import="dto.BbsDto"%>
+<%@page import="java.util.List"%>
+<%@page import="dao.BbsDao"%>
+<%@page import="dto.MemberDto"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+String _type = request.getParameter("_type");
+String keyword = request.getParameter("keyword");
+
+System.out.println("_type : " +_type);
+System.out.println("keyword : " +keyword);
+
+%>    
+<%!
+// 댓글의 여백과 이미지를 추가하는 함수
+public String arrow(int depth) {
+	String rs = "<img src='./image/arrow.png' width='20px' height='20px'/>";
+	String nbsp ="&nbsp;&nbsp;&nbsp;&nbsp;";
+	
+	String ts = "";
+	for(int i = 0 ; i < depth; i++) {
+		ts += nbsp;
+	}
+	
+	return depth==0?"":ts + rs;
+}			
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+<%
+	/* 세션 얻어오는 방법 2 */
+	/* 1) */
+	Object ologin = session.getAttribute("login1");
+	/* 2) */
+					//request.getSession().getAttribute("login");
+	MemberDto mem = null;
+	
+	//MemberDto mem = (MemberDto)request.getSession().getAttribute("login");
+	
+	if(ologin == null) {
+		response.sendRedirect("login1.jsp");
+		%>
+		<script type="text/javascript">
+			alert("로그인 해 주십시오")
+			location.href="login1.jsp";
+		</script>
+		<%
+	}
+	mem = (MemberDto) ologin;
+	
+	
+	BbsDao dao = BbsDao.getInstance();
+	List<BbsDto> list = dao.getFindList(keyword, _type);
+	
+%> 
+
+
+<h4 align="right" style="background-color: #f0f0f0">
+환영합니다 <%=mem.getId()%>님
+</h4>
+
+<h1>검색결과</h1>
+
+<div align="center">
+<table border="1">
+<col width="70"><col width="600"><col width="150">
+	<tr>
+		<th>번호</th> <th>제목</th> <th>작성자</th>
+	</tr>
+<%
+if(list == null || list.size() == 0) {
+	%>
+	<tr>
+		<td colspan="3">작성된 글이 없습니다.</td> 	
+	</tr>
+	<%
+} else {
+	
+	
+	for(int i = 0; i < list.size(); i++) {
+		BbsDto bbs = list.get(i);
+	%>
+	<tr>
+		<th><%=i + 1 %></th>
+		<td>
+			<% 
+			if(bbs.getDel() == 0) {
+			%>
+				<%=arrow(bbs.getDepth()) %>
+				<a href="bbsdetail.jsp?seq=<%=bbs.getSeq() %>">	<%=bbs.getTitle() %> </a>
+			<%	
+			} else if (bbs.getDel() == 1 && bbs.getStep() > 0){
+			%>
+			<%=arrow(bbs.getDepth()) %>( 삭제 된 댓글 입니다 )	　　　　
+			<%
+			} else {
+			%>
+				------- ( 삭제 된 글 입니다 ) -------
+			<%
+			}
+			%>
+		</td>
+		<td align="center">
+			<%=bbs.getId() %>
+		</td>
+	</tr>
+	<%
+	}
+}
+%>
+	
+
+</table>
+
+<form action="bbssearchlist.jsp" method="get">
+<table>
+<col width="220"><col width="600">
+<tr>
+	<td align="left">
+		<input type="button" value="글쓰기" onclick="location.href='bbswrite.jsp'">
+	</td>
+	<td align="right">
+		<select name="_type">
+			<option value="0">제목</option>
+			<option value="1">내용</option>
+			<option value="2">제목+내용</option>
+			<option value="3">글쓴이</option>
+		</select> 
+		<input type="search" name="keyword">
+		<input type="submit" value="검색">
+	</td>
+</tr>
+</table>
+</form>
+
+</div>
+
+<script type="text/javascript">
+function searchbbs() {
+	var choice = document.getElementById("choice").value;
+	var word = $("#search").val();
+	alert(choice);
+	alert(word);
+}
+</script>
+
+<a href="bbswrite.jsp">글쓰기</a>
+</body>
+</html>

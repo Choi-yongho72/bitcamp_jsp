@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<script type="text/javascript">
+
+var user = document.getElementById("user");
+var monster = document.getElementById("monster");
+user.setAttribute("HP", 100);
+user.style.left = "50px";
+
+</script>
+
+
+
+
+
+
+
+
+</body>
+</html>

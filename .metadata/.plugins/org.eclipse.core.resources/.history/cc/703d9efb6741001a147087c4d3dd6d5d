@@ -1,0 +1,10 @@
+package main;
+
+import java.io.Serializable;
+
+public class MovieVo implements Serializable {
+	private String title;
+	private int like;
+	
+	
+}

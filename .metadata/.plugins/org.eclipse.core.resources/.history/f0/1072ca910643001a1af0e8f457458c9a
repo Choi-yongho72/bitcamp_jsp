@@ -1,0 +1,136 @@
+<%@page import="dto.BbsDto"%>
+<%@page import="dao.BbsDao"%>
+<%@page import="dto.MemberDto"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+int seq = Integer.parseInt( request.getParameter("seq") );
+System.out.println("seq : " +seq);
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+<%
+	/* 세션 얻어오는 방법 2 */
+	/* 1) */
+	Object ologin = session.getAttribute("login");
+	/* 2) */
+					//request.getSession().getAttribute("login");
+	MemberDto mem = null;
+	
+	//MemberDto mem = (MemberDto)request.getSession().getAttribute("login");
+	
+	if(ologin == null) {
+		response.sendRedirect("login1.jsp");
+		%>
+		<script type="text/javascript">
+			alert("로그인 해 주십시오")
+			location.href="login1.jsp";
+		</script>
+		<%
+	}
+	mem = (MemberDto) ologin;
+	
+	
+	BbsDao dao = BbsDao.getInstance();
+ 	//dao.readCount(seq);	// 수정창에서 새로고침시 조회수 증가하지 않도록
+	BbsDto dto = dao.getBbs(seq);	// 호출
+	
+%> 
+ 
+<h1>글 수정하기</h1>
+<div align="center">
+<form action="bbsupdateAf.jsp" method="post">
+	<input type="hidden" name="seq" value="<%=dto.getSeq()%>">
+<table border="1">
+<colgroup>
+	<col style="width: 150">
+	<col style="width: 600">
+</colgroup>
+	<tr>
+		<th>작성자</th>
+		<td>
+			<%-- <input type="text" name="id" size="50px" value="<%=mem.getId()%>" readonly="readonly"> --%>
+			<%-- <input type="text" id="id" name="id" size="30px" value=${ login.id } readonly="readonly">	<!-- el tag --> --%>
+			<%=dto.getId() %>
+		</td>
+	</tr>
+	<tr>
+		<th>조회수</th>
+		<td>
+			<%-- <input type="text" id="readcount" name="=readcount" size="30px" value="<%=dto.getReadcount()%>" readonly="readonly"> --%>
+			<%=dto.getReadcount() %>
+		</td>		
+	</tr>
+	<tr>
+		<th>작성일</th>
+		<td>
+			<%-- <input type="text" id="wdate" name="wdate" size="30px" value="<%=dto.getWdate()%>" readonly="readonly"> --%>
+			<%=dto.getWdate() %>
+		</td>
+	</tr>
+	<tr>
+		<th>제목</th>
+		<td>
+			<input type="text" id="title" name="title" size="70px" value="<%=dto.getTitle()%>">
+					
+		</td>
+	</tr>	
+	<tr>
+		<th>정보</th>
+		<td>
+			<%=dto.getRef() %>-<%=dto.getStep() %>-<%=dto.getDepth() %>-<%=dto.getDel() %>
+		</td> 
+	</tr>
+	<tr>
+		<th>내용</th>
+		<td>
+			<%-- <textarea rows="20" cols="70px" id="content" name="content"> <%=dto.getContent()%> </textarea> --%>
+			<textarea rows="10" cols="90px" name="content"><%=dto.getContent()%></textarea>
+		</td> 
+	</tr>
+	
+	
+<!-- 	<tr>
+		<td colspan="2">
+			<input type="button" id="listBtn" value="목록">
+			<input type="submit" value="수정">
+			<input type="button" id="delBtn" value="삭제">
+			<input type="button" id="repBtn" value="댓글">
+		</td>
+	</tr> -->
+
+</table>
+
+<%
+if(dto.getId().equals(mem.getId())){	/* 로그인 id와 같을때 버튼 on */
+%>
+<button type="submit">수정 실행</button>
+<%
+}
+%>
+<button type="button" onclick="location.href='bbslist.jsp'">목록</button>
+</form>
+</div> 
+ 
+<script type="text/javascript">
+/* $(function () {
+	$("#listBtn").click(function () {
+		location.href = "bbslist.jsp";
+	});
+	
+	$("#delBtn").click(function () {
+		location.href = "";
+	})
+}) */
+
+
+
+</script>
+</body>
+</html>

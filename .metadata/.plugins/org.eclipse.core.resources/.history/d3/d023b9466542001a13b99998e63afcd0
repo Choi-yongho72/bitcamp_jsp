@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<input class="rand-text" type="text">
+<input class="rand-text" type="text">
+<input class="rand-text" type="text">
+
+<script type="text/javascript">
+
+</script>
+</body>
+</html>

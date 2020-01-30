@@ -1,0 +1,63 @@
+<%@page import="dto.MemberDto"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<%--
+	forward(이동하기), include(불러오기) -> iframe
+--%>
+
+<h3>index.jsp 시작~~~</h3>
+
+<jsp:include page="NewFile.jsp" flush="false"></jsp:include>
+
+<h3>index.jsp 끝~~~</h3>
+
+<%-- 
+<jsp:forward page="NewFile.jsp"></jsp:forward>
+--%>
+
+<%--
+EL, Core
+MemberDto dto = new MemberDto();
+--%>
+
+<%--
+MemberDto mem = new MemberDto();
+mem.setMessage("안녕");
+String msg = mem.getMessage();
+
+request.setAttribute("mem", mem);
+--%>
+<% 
+<jsp:useBean id="mem" class="dto.MemberDto"></jsp:useBean>	<!-- MemberDto mem = new MemberDto(); -->
+<jsp:setProperty property="message" name="mem" value="안녕"/>
+<jsp:getProperty property="message" name="mem"/>
+%>
+message는 ${ mem.message }
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

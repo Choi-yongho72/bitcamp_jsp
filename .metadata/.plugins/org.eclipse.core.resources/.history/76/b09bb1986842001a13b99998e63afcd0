@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<select id="my-selector">
+	<option></option>
+	<option></option>
+	<option></option>
+</select>
+
+<script type="text/javascript">
+	var mySelector = document.getElementById('my-selector');
+	var mOptions = mySelector.getElementsByTagName('option');
+	
+	for(var i = 0; i < mOption.length; i++) {
+		mOptions[i].innerHTML = Math.round(Math.random()) * 10000);
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+package dto;
+
+import java.io.Serializable;
+
+public class BBS implements Serializable {
+	private int seq;
+	private String id;		//작성자
+	
+	private int ref;		// 그룹번호
+	private int step;		// 행(row) 번호
+	private int depth;		// 깊이
+	
+	private String title;
+	private String content;
+	private String wdate;	// 작성일
+	
+	private int del;
+	private int readcount;
+	
+	public BBS() {
+	}
+}

@@ -1,0 +1,33 @@
+package main;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
+
+public class MovieManager {
+	public static List<MovieVo> getCGVdata() {
+		Document doc;
+		
+		List<MovieVo> list = new ArrayList<MovieVo>();
+		
+		try {
+			doc = Jsoup.connect("http://www.cgv.co.kr/movies/").get();
+			
+			// 영화제목
+			Elements titles = doc.select("div.box-contents strong.title");		// box-contents안의 타이틀 다 가져와
+			/*
+			<div class="box-contents">
+                        <a href="/movies/detail-view/?midx=82999">
+                            <strong class="title">남산의 부장들</strong>
+                        </a>
+			*/
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+}

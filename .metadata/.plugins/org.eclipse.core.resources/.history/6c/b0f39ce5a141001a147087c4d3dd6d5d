@@ -1,0 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>게시판</title>
+</head>
+<body>
+<%
+Object ologin = session.getAttribute("login");
+%>
+<h4 align="right" style="background-color: #f0f0f0">
+	환영해! <%= %>
+</h4>
+
+
+
+</body>
+</html>

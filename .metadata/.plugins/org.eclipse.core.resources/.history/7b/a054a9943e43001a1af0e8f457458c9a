@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+function m_over(target) {
+	target.sytle.color="red";
+}
+function m_out(target) {
+	target.style.color="blue";
+}
+</script>
+
+
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<button id="my-btn" onmouseover="m_over(this)" onmouseout="m_out(this)">
+	Mouse Over it!
+</button>
+
+
+
+
+
+
+
+</body>
+</html>

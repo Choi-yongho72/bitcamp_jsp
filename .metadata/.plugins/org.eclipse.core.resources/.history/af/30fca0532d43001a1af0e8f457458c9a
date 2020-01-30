@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+	$(window).ready(function () {
+		var box = $('#box');
+		box.on('click', function () {
+			box.css('width', box.innerWidth() + 20 + 'px');
+		})
+	});
+
+</script>
+</head>
+<body>
+
+<input type="email">
+
+
+</body>
+</html>

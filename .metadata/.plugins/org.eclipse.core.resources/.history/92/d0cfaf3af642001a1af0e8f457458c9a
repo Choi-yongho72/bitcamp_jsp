@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<script type="text/javascript">
+function innerTestTest(target) {
+	target.innerText = '<strong>click</strong>';
+}
+</script>
+
+<div id="rand-val">Let's generate random Value</div>
+<button type="button" onclick="innerHTMLTest()">Generate</button>
+
+
+
+
+
+</body>
+</html>

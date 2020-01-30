@@ -1,0 +1,68 @@
+<%@page import="dto.MemberDto"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%!
+// 댓글의 여백과 이미지를 추가하는 함수
+public String arrow(int depth){
+	String rs = "<img src='./image/arrow.png' width='20px' height='20px'/>";
+	String nbsp = "&nbsp;&nbsp;&nbsp;&nbsp;";
+	
+	String ts = "";
+	for(int i = 0;i < depth; i++){
+		ts += nbsp;
+	}	
+	return depth==0?"":ts + rs;
+}
+%>	    
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>게시판</title>
+</head>
+<body>
+<%
+Object ologin = session.getAttribute("login1");
+//request.getSession().getAttribute(name);
+MemberDto mem = null;
+if(ologin == null) {	// 세션 기간이 만료됐어!
+%>
+	<script type="text/javascript">
+	alert("다시 로그인 해줄래?");
+	location.href = "login1.jsp";
+	</script>
+<%
+}
+mem = (MemberDto)ologin;
+
+%>
+<h4 align="right" style="background-color: #f0f0f0">
+	환영해 <%=mem.getId() %>님!
+</h4>
+
+<h1>게시판</h1>
+
+<a href="bbswrite.jsp">글쓰기</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

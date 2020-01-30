@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<script type="text/javascript">
+
+function innerHTMLTest() {
+	var randValNode = document.getElementById("rand-val");
+	randValNode.innerHTML = "<b><font color='red'>"+Math.random()+"</font></b>";
+}
+
+</script>
+
+<div id="rand-val">Let's generate random Value</div>
+
+
+
+
+
+
+</body>
+</html>
